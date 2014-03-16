@@ -18,7 +18,6 @@ class GameObject(object):
     
     def getSprite(self):
         return self.sprite
-    
-    
+        
     def setSpeed(self, x, y):
         self.speed = [x, y]
