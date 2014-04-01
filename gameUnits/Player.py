@@ -9,13 +9,13 @@ from gameUnits import GameObject
 class Player(GameObject.GameObject):
       
     def __init__(self):
-        super(Player, self).__init__("helicopter", [1, 1], pygame.image.load("images/copter.gif").convert())
+        super(Player, self).__init__("helicopter", [1, 1], pygame.image.load("images/p1.gif").convert())
         
         self.animationIndex = 0
         self.copterBlades = []
-        self.copterBlades.append(pygame.image.load("images/copter_blade1.png"))
-        self.copterBlades.append(pygame.image.load("images/copter_blade2.png"))
-        self.copterBlades.append(pygame.image.load("images/copter_blade3.png"))
+        self.copterBlades.append(pygame.image.load("images/b1.gif"))
+        self.copterBlades.append(pygame.image.load("images/b2.gif"))
+        self.copterBlades.append(pygame.image.load("images/b3.gif"))
         
         self.copterBlade = self.copterBlades[self.animationIndex]
     
