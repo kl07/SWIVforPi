@@ -8,10 +8,8 @@ from gameUnits import GameObject
 
 class Player(GameObject.GameObject):
       
-    def __init__(self):
-        super(Player, self).__init__("helicopter", [4, 4], pygame.image.load("images/p1.gif").convert())
-        
-        self.playerrect = GameObject.GameObject.getRect(self)
+    def __init__(self, x, y):
+        super(Player, self).__init__("helicopter", [4, 4], pygame.image.load("images/p1.gif").convert(), x, y)
         
         self.animationIndex = 0
         self.copterBlades = []
@@ -23,14 +21,14 @@ class Player(GameObject.GameObject):
     def update(self, keys):        
         self.updateCopterBlades()
         
-        if keys[pygame.K_a] and (self.playerrect.x > 0):
-            self.playerrect = self.playerrect.move([-GameObject.GameObject.getSpeed(self)[0], 0])
-        if keys[pygame.K_d] and (self.playerrect.x < 200-self.playerrect.width): # Use static vars
-            self.playerrect = self.playerrect.move([GameObject.GameObject.getSpeed(self)[0], 0])
-        if keys[pygame.K_w] and (self.playerrect.y > 0):
-            self.playerrect = self.playerrect.move([0,-GameObject.GameObject.getSpeed(self)[1]])
-        if keys[pygame.K_s] and (self.playerrect.y < 300-self.playerrect.width):
-            self.playerrect = self.playerrect.move([0,GameObject.GameObject.getSpeed(self)[1]])
+        if keys[pygame.K_a] and (self.rect.x > 0):
+            self.rect = self.rect.move([-GameObject.GameObject.getSpeed(self)[0], 0])
+        if keys[pygame.K_d] and (self.rect.x < 200-self.rect.width): # Use static vars
+            self.rect = self.rect.move([GameObject.GameObject.getSpeed(self)[0], 0])
+        if keys[pygame.K_w] and (self.rect.y > 0):
+            self.rect = self.rect.move([0,-GameObject.GameObject.getSpeed(self)[1]])
+        if keys[pygame.K_s] and (self.rect.y < 300-self.rect.width):
+            self.rect = self.rect.move([0,GameObject.GameObject.getSpeed(self)[1]])
     
     def updateCopterBlades(self):
         self.animationIndex = (self.animationIndex + 1) % len(self.copterBlades)

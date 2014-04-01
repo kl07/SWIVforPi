@@ -54,3 +54,4 @@ docs/_build/
 
 # Photoshop
 *.psd
+.db

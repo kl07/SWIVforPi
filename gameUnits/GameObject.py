@@ -7,11 +7,14 @@ import pygame
 
 class GameObject(object):
 
-    def __init__(self, name, speed, sprite):
+    def __init__(self, name, speed, sprite, x, y):
         self.name = name
         self.speed = speed
         self.sprite = sprite
-        self.alive = 1
+        self.alive = 1        
+        self.rect = sprite.get_rect()
+        self.rect.x = x
+        self.rect.y = y        
         
     def getName(self):
         return self.name
