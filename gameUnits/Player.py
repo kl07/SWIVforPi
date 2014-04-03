@@ -18,16 +18,16 @@ class Player(GameObject.GameObject):
         self.copterBlades.append(pygame.image.load("images/b3.gif"))        
         self.copterBlade = self.copterBlades[self.animationIndex]
     
-    def update(self, keys):        
+    def update(self, keys, joyX, joyY):        
         self.updateCopterBlades()
         
-        if keys[pygame.K_a] and (self.rect.x > 0):
+        if (keys[pygame.K_a] or joyX < 600) and (self.rect.x > 0):
             self.rect = self.rect.move([-GameObject.GameObject.getSpeed(self)[0], 0])
-        if keys[pygame.K_d] and (self.rect.x < 200-self.rect.width): # Use static vars
+        if (keys[pygame.K_d]  or joyX > 800) and (self.rect.x < 200-self.rect.width): # Use static vars
             self.rect = self.rect.move([GameObject.GameObject.getSpeed(self)[0], 0])
-        if keys[pygame.K_w] and (self.rect.y > 0):
+        if (keys[pygame.K_w]  or joyY > 800) and (self.rect.y > 0):
             self.rect = self.rect.move([0,-GameObject.GameObject.getSpeed(self)[1]])
-        if keys[pygame.K_s] and (self.rect.y < 300-self.rect.width):
+        if (keys[pygame.K_s]  or joyY < 600) and (self.rect.y < 300-self.rect.width):
             self.rect = self.rect.move([0,GameObject.GameObject.getSpeed(self)[1]])
     
     def updateCopterBlades(self):
