@@ -6,7 +6,6 @@ from gameUnits import Player
 from gameUnits import Enemy
 from gameUnits import Explosion
 from projectiles import Bullets
-from threading import Thread
     
 class SwivPi(object):     
     
@@ -46,7 +45,7 @@ class SwivPi(object):
         js.main()          
          
         while(gameOver):
-            joyButton = 700#js.readadc(2, js.SPICLK, js.SPIMOSI, js.SPIMISO, js.SPICS)
+            joyButton = js.readadc(2, js.SPICLK, js.SPIMOSI, js.SPIMISO, js.SPICS)
             if(joyButton > 1000):
                 gameOver = 0                
             for event in pygame.event.get():
